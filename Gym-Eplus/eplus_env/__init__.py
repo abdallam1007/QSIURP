@@ -11,7 +11,7 @@ register(
     kwargs={'eplus_path':FD + '/envs/EnergyPlus-8-6-0/', # The EnergyPlus software path
             'weather_path':FD + '/envs/weather/pittsburgh_TMY3.epw', # The epw weather file
             'bcvtb_path':FD + '/envs/bcvtb/', # The BCVTB path
-            'variable_path':FD + '/envs/eplus_models/demo_5z/learning/cfg/variables_v0.cfg', # The cfg file
+            'variable_path':FD + '/envs/eplus_models/demo_5z/learning/cfg/5ZoneAutoDXVAV_v0.cfg', # The cfg file
             'idf_path':FD + '/envs/eplus_models/demo_5z/learning/idf/5ZoneAutoDXVAV_v0.idf', # The idf file
             'env_name': 'Eplus-test-v1',
             });
