@@ -45,6 +45,6 @@ register(
             'weather_path':FD + '/envs/weather/pittsburgh_TMY3.epw', # The epw weather file
             'bcvtb_path':FD + '/envs/bcvtb/', # The BCVTB path
             'variable_path':FD + '/envs/eplus_models/demo_5z/learning/cfg/5ZoneAutoDXVAV_v0.cfg', # The cfg file
-            'idf_path':FD + '/envs/eplus_models/demo_5z/learning/idf/5ZoneAutoDXVAV_v2.idf', # The idf file
+            'idf_path':FD + '/envs/eplus_models/demo_5z/learning/idf/1ZoneAutoDXVAV_v0.idf', # The idf file
             'env_name': 'Eplus-test-v4',
             });
