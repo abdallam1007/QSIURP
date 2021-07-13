@@ -33,9 +33,31 @@ def getFreqTable(inTemps,outTemps):
   return freqDict
 '''
 
-def getReward(sp,rt,energy):
-  # 128 is the mean value
-  return 128 - round(abs(sp - rt) * (energy // 100))
+max_energy = 0
+min_energy = 0
+max_temp = 0
+min_temp = 0
+
+
+def normalize(x,x_max,x_min):
+
+  if x < x_min:
+    x = x_min
+  elif x > x_max:
+    x = x_max
+
+  return (x_max - x) / (x_max - x_min)
+
+def cubic(x, scale = - 0.1, translation = 0):
+  return translation + (x**3) * scale
+
+def getReward(sp,rt,E15):
+  a = 0.5
+  delta_sp = abs(sp - rt)
+  norm_e = normalize(E15,max_energy,min_energy)
+  norm_t = normalize(delta_sp,max_temp,min_temp)
+  R = a * norm_e + (1-a) * norm_t
+  return cubic(8 * R - 4, scale = -0.1, translation = 2)
 
 def simulate(sp,inTemps,outTemps):
   alpha = 0.6
@@ -49,7 +71,7 @@ def simulate(sp,inTemps,outTemps):
   env = gym.make('Eplus-test-v4')
 
   # Number of episodes
-  for i in range(10):
+  for i in range(500):
 
     # Reset the env (creat the EnergyPlus subprocess)
     curSimTime, ob, isTerminal = env.reset()
@@ -57,7 +79,6 @@ def simulate(sp,inTemps,outTemps):
     # get the initial in/out temps and the energy consumption
     state = (round(ob[8]),round(ob[0]))
     energyC = ob[14] # ???
-    reward = 0
     while not isTerminal:
       if random.uniform(0,1) < epsilon:
         choice = random.randint(0,1)
@@ -100,3 +121,6 @@ def simulate(sp,inTemps,outTemps):
 simulate(30,(0,31),(-17,35))
 
 # u late i u ate
+
+# plot one list (cubicise)
+# plot learning rate
