@@ -12,8 +12,8 @@
 !
 ! Location:                Pittsburgh, PA
 !
-! Design Days:             Pittsburgh Allegheny Co Ap_PA_USA Annual Heating 99.6%, MaxDB=-15.4°C
-!                          Pittsburgh Allegheny Co Ap_PA_USA Annual Cooling (DB=>MWB) .4%, MaxDB=32.2°C MWB=22.5°C
+! Design Days:             Pittsburgh Allegheny Co Ap_PA_USA Annual Heating 99.6%, MaxDB=-15.4ï¿½C
+!                          Pittsburgh Allegheny Co Ap_PA_USA Annual Cooling (DB=>MWB) .4%, MaxDB=32.2ï¿½C MWB=22.5ï¿½C
 !
 ! Run Control:             Zone and System sizing with weather file run control (no design days run)
 !
@@ -183,7 +183,7 @@
     No,                      !- Run Simulation for Sizing Periods
     Yes;                     !- Run Simulation for Weather File Run Periods
 
-! Pittsburgh Allegheny Co Ap_PA_USA Annual Heating 99.6%, MaxDB=-15.4°C
+! Pittsburgh Allegheny Co Ap_PA_USA Annual Heating 99.6%, MaxDB=-15.4ï¿½C
 
 SizingPeriod:DesignDay,
   Pittsburgh Allegheny Co Ap Ann Htg 99.6% Condns DB,     !- Name
@@ -213,7 +213,7 @@ SizingPeriod:DesignDay,
            ,      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
        0.00;      !- Clearness {0.0 to 1.1}
 
-! Pittsburgh Allegheny Co Ap_PA_USA Annual Cooling (DB=>MWB) .4%, MaxDB=32.2°C MWB=22.5°C
+! Pittsburgh Allegheny Co Ap_PA_USA Annual Cooling (DB=>MWB) .4%, MaxDB=32.2ï¿½C MWB=22.5ï¿½C
 
  SizingPeriod:DesignDay,
   Pittsburgh Allegheny Co Ap Ann Clg .4% Condns DB=>MWB,     !- Name

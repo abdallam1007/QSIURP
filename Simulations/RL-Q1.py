@@ -33,9 +33,9 @@ def getFreqTable(inTemps,outTemps):
   return freqDict
 '''
 
-max_energy = 0
+max_energy = 11000
 min_energy = 0
-max_temp = 0
+max_temp = 24
 min_temp = 0
 
 
@@ -70,8 +70,11 @@ def simulate(sp,inTemps,outTemps):
   #freqTable = getFreqTable(inTemps,outTemps)
   env = gym.make('Eplus-test-v4')
 
+  cum_R_List = []
+
   # Number of episodes
-  for i in range(500):
+  for i in range(1):
+    cum_R = 0
 
     # Reset the env (creat the EnergyPlus subprocess)
     curSimTime, ob, isTerminal = env.reset()
@@ -99,6 +102,7 @@ def simulate(sp,inTemps,outTemps):
       # get the energy consumption for the last 15 mins
       energyC = abs(energyC - ob[14])
       reward = getReward(sp,ob[8],energyC)
+      cum_R += reward
 
       oldQValue = qTable[state][choice]
       nextQMax = max(qTable[nextState])
@@ -110,17 +114,16 @@ def simulate(sp,inTemps,outTemps):
 
       state = nextState
       # ate next ate (زي المفجوع)
+    cum_R_List.append(cum_R)
+
+  #plt.plot(cum_R_List)
 
 # Safe termination of the environment after use.
   env.end_env()
-
-  #maxKey = max(freqTable,key=freqTable.get)
-  #print(maxKey,qTable[maxKey])
-  #print(qTable)
 
 simulate(30,(0,31),(-17,35))
 
 # u late i u ate
 
-# plot one list (cubicise)
+
 # plot learning rate
